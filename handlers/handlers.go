@@ -23,13 +23,10 @@ func NewHandlerImpl(service service.Service) *HandlersImpl {
 //bookcab
 func (handlersImpl HandlersImpl) BookCab(g *gin.Context) {
 	fmt.Println("STEP 3 : FROM HANDLER")
+
 	BookRequest := models.CabBookRequest{}
-	BookRequest.Time = "time.Now().String()"
-	BookRequest.UserID = 12                 //gin.PostForm()
-	BookRequest.PickUp.Latitude = 21.222212 //gin.PostForm()
-	BookRequest.PickUp.Longitude = 21.3223  //gin.PostForm()
-	BookRequest.Drop.Latitude = 21.212      //gin.PostForm()
-	BookRequest.Drop.Longitude = 212.22     //gin.PostForm()
+	g.BindJSON(&BookRequest)
+	fmt.Println(BookRequest)
 	_, err := handlersImpl.svc.BookCab(BookRequest)
 
 	if err != nil {

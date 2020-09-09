@@ -1,12 +1,13 @@
 package models
 
 type Location struct {
+	Area      string
 	Latitude  float64
 	Longitude float64
 }
 
 type CabBookRequest struct {
-	UserID int
+	UserId int
 	Time   string
 	PickUp Location
 	Drop   Location

@@ -45,7 +45,7 @@ func (handlersImpl HandlersImpl) RideHistory(c *gin.Context) {
 	}
 	res, err := handlersImpl.svc.RideHistory(UserId)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"message": "FAILD", "status": err})
+		c.JSON(http.StatusNoContent, gin.H{"message": "FAILD", "status": err})
 	} else {
 		c.JSON(http.StatusOK, res)
 	}

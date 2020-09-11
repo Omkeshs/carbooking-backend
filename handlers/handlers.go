@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	service "std/omkesh/carBooking-Backend/service"
+	"strconv"
 
 	"std/omkesh/carBooking-Backend/models"
 
@@ -20,19 +21,33 @@ func NewHandlerImpl(service service.Service) *HandlersImpl {
 	return &HandlersImpl{svc: service}
 }
 
-//bookcab
-func (handlersImpl HandlersImpl) BookCab(g *gin.Context) {
-	fmt.Println("STEP 3 : FROM HANDLER")
-
+//User can bookcab
+func (handlersImpl HandlersImpl) BookCab(c *gin.Context) {
 	BookRequest := models.CabBookRequest{}
-	g.BindJSON(&BookRequest)
+	c.BindJSON(&BookRequest)
 	fmt.Println(BookRequest)
-	_, err := handlersImpl.svc.BookCab(BookRequest)
+	res, err := handlersImpl.svc.BookCab(BookRequest)
 
 	if err != nil {
-		g.JSON(http.StatusOK, gin.H{"message": "DONE", "status": http.StatusOK})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "FAILD", "status": err.Error()})
 	} else {
-		g.JSON(http.StatusOK, gin.H{"message": "ERROR", "status": http.StatusOK})
+		c.JSON(http.StatusOK, res)
+	}
+
+}
+
+//user can ride history
+func (handlersImpl HandlersImpl) RideHistory(c *gin.Context) {
+
+	UserId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid UserId"})
+	}
+	res, err := handlersImpl.svc.RideHistory(UserId)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"message": "FAILD", "status": err})
+	} else {
+		c.JSON(http.StatusOK, res)
 	}
 
 }

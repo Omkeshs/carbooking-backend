@@ -19,7 +19,6 @@ const (
 )
 
 func main() {
-	fmt.Println("STEP 1 : FROM MAIN")
 	router := gin.Default()
 
 	//CORS ISSUE

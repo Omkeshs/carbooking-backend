@@ -3,10 +3,11 @@ package handlers
 import (
 	"fmt"
 	"net/http"
-	service "std/omkesh/carBooking-Backend/service"
 	"strconv"
 
-	"std/omkesh/carBooking-Backend/models"
+	service "github.com/Omkeshs/carbooking-backend/service"
+
+	"github.com/Omkeshs/carbooking-backend/models"
 
 	"github.com/gin-gonic/gin"
 )

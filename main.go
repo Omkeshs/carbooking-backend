@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
-	"std/omkesh/carBooking-Backend/database"
-	"std/omkesh/carBooking-Backend/endpoints"
 	"time"
 
-	handler "std/omkesh/carBooking-Backend/handlers"
-	repository "std/omkesh/carBooking-Backend/repositories"
-	service "std/omkesh/carBooking-Backend/service"
+	endpoints "github.com/Omkeshs/carbooking-backend/endpoints"
+
+	"github.com/Omkeshs/carbooking-backend/database"
+
+	service "github.com/Omkeshs/carbooking-backend/service"
+
+	repository "github.com/Omkeshs/carbooking-backend/repositories"
+
+	handler "github.com/Omkeshs/carbooking-backend/handlers"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

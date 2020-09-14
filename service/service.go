@@ -1,9 +1,11 @@
 package services
 
 import (
-	helpers "std/omkesh/carBooking-Backend/helpers"
-	"std/omkesh/carBooking-Backend/models"
-	repository "std/omkesh/carBooking-Backend/repositories"
+	"std/omkesh/Practice/carBooking-Backend/models"
+
+	repository "github.com/Omkeshs/carbooking-backend/repositories"
+
+	helpers "github.com/Omkeshs/carbooking-backend/helpers"
 )
 
 // Service describes the service.

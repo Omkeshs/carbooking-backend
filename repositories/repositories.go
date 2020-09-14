@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"std/omkesh/carBooking-Backend/models"
+	"github.com/Omkeshs/carbooking-backend/models"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"

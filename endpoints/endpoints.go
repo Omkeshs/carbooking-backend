@@ -1,7 +1,7 @@
 package endpoints
 
 import (
-	handler "std/omkesh/carBooking-Backend/handlers"
+	handler "std/omkesh/Practice/carBooking-Backend/handlers"
 
 	"github.com/gin-gonic/gin"
 )

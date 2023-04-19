@@ -1,3 +1,4 @@
+-- CarBookingPortal.sql
 -- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
 --
 -- Host: localhost    Database: car_book

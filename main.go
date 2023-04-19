@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"time"
 
-	endpoints "github.com/Omkeshs/carbooking-backend/endpoints"
+	endpoints "carbooking-backend/endpoints"
 
-	"github.com/Omkeshs/carbooking-backend/database"
+	"carbooking-backend/database"
 
-	service "github.com/Omkeshs/carbooking-backend/service"
+	service "carbooking-backend/service"
 
-	repository "github.com/Omkeshs/carbooking-backend/repositories"
+	repository "carbooking-backend/repositories"
 
-	handler "github.com/Omkeshs/carbooking-backend/handlers"
+	handler "carbooking-backend/handlers"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -24,6 +24,9 @@ const (
 
 func main() {
 	router := gin.Default()
+
+	// Set mode
+	// gin.SetMode(gin.DebugMode)
 
 	//CORS ISSUE
 	router.Use(cors.New(cors.Config{

@@ -1,30 +1,30 @@
 package repositories
 
 import (
-	"github.com/Omkeshs/carbooking-backend/models"
+	"carbooking-backend/models"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 )
 
-//Repository implimets all methods in Repository
+// Repository implimets all methods in Repository
 type Repository interface {
 	SearchCab(models.SearchCab) ([]models.FoundCab, error)
 	GetCabDetails(int) (models.SearchCabResponce, error)
 	RideHistory(int) ([]models.RideHistory, error)
 }
 
-//RepositoryImpl **
+// RepositoryImpl **
 type RepositoryImpl struct {
 	dbConn *gorm.DB
 }
 
-//NewRepositoryImpl inject dependancies of DataStore
+// NewRepositoryImpl inject dependancies of DataStore
 func NewRepositoryImpl(dbConn *gorm.DB) Repository {
 	return &RepositoryImpl{dbConn: dbConn}
 }
 
-//Find nearest cab list by user pickup location
+// Find nearest cab list by user pickup location
 func (repositoryImpl RepositoryImpl) SearchCab(searchCabReq models.SearchCab) (resp []models.FoundCab, err error) {
 	dbConn := repositoryImpl.dbConn
 
@@ -39,7 +39,7 @@ func (repositoryImpl RepositoryImpl) SearchCab(searchCabReq models.SearchCab) (r
 	return resp, nil
 }
 
-//Get Driver and Cab details by CabID
+// Get Driver and Cab details by CabID
 func (repositoryImpl RepositoryImpl) GetCabDetails(cab_id int) (resp models.SearchCabResponce, err error) {
 	dbConn := repositoryImpl.dbConn
 
@@ -54,7 +54,7 @@ func (repositoryImpl RepositoryImpl) GetCabDetails(cab_id int) (resp models.Sear
 	return resp, nil
 }
 
-//get cab ride history
+// get cab ride history
 func (repositoryImpl RepositoryImpl) RideHistory(UserId int) (resp []models.RideHistory, err error) {
 	dbConn := repositoryImpl.dbConn
 	query := `select ride_id,user_id,cab_no,driver_id,booking_id,pickup_loc,drop_loc,created_at from cb_rides where user_id=?;`

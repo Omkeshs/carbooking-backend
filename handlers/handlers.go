@@ -5,28 +5,28 @@ import (
 	"net/http"
 	"strconv"
 
-	service "github.com/Omkeshs/carbooking-backend/service"
+	service "carbooking-backend/service"
 
-	"github.com/Omkeshs/carbooking-backend/models"
+	"carbooking-backend/models"
 
 	"github.com/gin-gonic/gin"
 )
 
-//HandlersImpl for handler Functions
+// HandlersImpl for handler Functions
 type HandlersImpl struct {
 	svc service.Service
 }
 
-//NewHandlerImpl inits dependancies for graphQL and Handlers
+// NewHandlerImpl inits dependancies for graphQL and Handlers
 func NewHandlerImpl(service service.Service) *HandlersImpl {
 	return &HandlersImpl{svc: service}
 }
 
-//User can bookcab
+// User can bookcab
 func (handlersImpl HandlersImpl) BookCab(c *gin.Context) {
 	BookRequest := models.CabBookRequest{}
 	c.BindJSON(&BookRequest)
-	fmt.Println(BookRequest)
+	fmt.Printf("\nhandler request : %+v\n", BookRequest)
 	res, err := handlersImpl.svc.BookCab(BookRequest)
 
 	if err != nil {
@@ -37,7 +37,7 @@ func (handlersImpl HandlersImpl) BookCab(c *gin.Context) {
 
 }
 
-//user can ride history
+// user can ride history
 func (handlersImpl HandlersImpl) RideHistory(c *gin.Context) {
 
 	UserId, err := strconv.Atoi(c.Param("id"))
